@@ -1,18 +1,11 @@
 from django.contrib import admin
-from django.urls import path, include   
-import sys
-import os
-
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-
-from backend.views import front
+from django.urls import path, include
+from backend.views import user_login  # Import your login view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", front, name="front"),
-    path('app/', include('backend.urls')),
+    path('signup/', include('backend.urls')),  # Assuming signup is handled in backend.urls
+    path('login/', user_login, name='login'),  # Assuming user_login is your login view
+    path('logout/', include('backend.urls')),  # Assuming logout is handled in backend.urls
+    path('', user_login),  # Redirect root URL to login page
 ]
-
-admin.site.index_title = "MedQuery Administration"
-admin.site.site_header = "MedQuery: Medisina medisina medisina -because"
-admin.site.site_title = "MedQuery"
