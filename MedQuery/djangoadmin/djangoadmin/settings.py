@@ -108,6 +108,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CSRF_TRUSTED_ORIGINS = [ #new
+    "http://localhost:3000",
+]
+
+AUTHENTICATION_BACKENDS = [ #new
+    'django.contrib.auth.backends.ModelBackend',  # default backend
+    'backend.authentication.EmailAuthBackend',    # your custom backend
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

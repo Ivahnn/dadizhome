@@ -25,16 +25,16 @@ function Footer() {
           </form>
         </div>
       </section>
-      <div class="footer-links">
+      <div className="footer-links">
         <div className="footer-link-wrapper">
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>About Us</h2>
             <Link to="/aboutus">Our Beginnings</Link>
             <Link to="/aboutus">The Story Behind the Name</Link>
             <Link to="/aboutus">Meet the Team</Link>
             <Link to="/contactus">Services</Link>
           </div>
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Contact Us</h2>
             <Link to="/contactus">Contact</Link>
             <Link to="/contactus">Support</Link>
@@ -43,7 +43,7 @@ function Footer() {
           </div>
         </div>
         <div className="footer-link-wrapper">
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Articles</h2>
             <Link to="https://www.who.int/health-topics/medicines#tab=tab_1">
               Medicine
@@ -59,7 +59,7 @@ function Footer() {
             </Link>
           </div>
 
-          <div class="footer-link-items">
+          <div className="footer-link-items">
             <h2>Social Media</h2>
             <Link to="https://www.instagram.com/">Instagram</Link>
             <Link to="https://www.facebook.com/">Facebook</Link>
@@ -68,48 +68,48 @@ function Footer() {
           </div>
         </div>
       </div>
-      <section class="social-media">
-        <div class="social-media-wrap">
-          <div class="footer-logo">
+      <section className="social-media">
+        <div className="social-media-wrap">
+          <div className="footer-logo">
             <Link to="/" className="social-logo">
               MedQuery
             
             </Link>
           </div>
-          <small class="website-rights">MedQuery© 2024</small>
+          <small className="website-rights">MedQuery© 2024</small>
 
-          <div class="social-icons">
+          <div className="social-icons">
             <Link
-              class="social-icon-link facebook"
+              className="social-icon-link facebook"
               to="https://www.facebook.com/"
               target="_blank"
               aria-label="Facebook"
             >
-              <i class="fab fa-facebook-f" />
+              <i className="fab fa-facebook-f" />
             </Link>
             <Link
-              class="social-icon-link instagram"
+              className="social-icon-link instagram"
               to="https://www.instagram.com/"
               target="_blank"
               aria-label="Instagram"
             >
-              <i class="fab fa-instagram" />
+              <i className="fab fa-instagram" />
             </Link>
             <Link
-              class="social-icon-link youtube"
+              className="social-icon-link youtube"
               to="https://www.youtube.com/"
               target="_blank"
               aria-label="Youtube"
             >
-              <i class="fab fa-youtube" />
+              <i className="fab fa-youtube" />
             </Link>
             <Link
-              class="social-icon-link twitter"
+              className="social-icon-link twitter"
               to="https://twitter.com/home"
               target="_blank"
               aria-label="Twitter"
             >
-              <i class="fab fa-twitter" />
+              <i className="fab fa-twitter" />
             </Link>
           </div>
         </div>
