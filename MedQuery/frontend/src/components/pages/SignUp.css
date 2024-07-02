@@ -99,10 +99,11 @@
     flex-grow: 1;
   }
   
-  .form-image {
-    width: 200%; 
-    height: auto; 
-    max-height: 120%; 
-    object-fit: cover; 
-  }
+ .form-image {
+  width: 200%; /* Adjust to fit your layout */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 100%; /* Ensure it doesn't exceed its container */
+  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
   
