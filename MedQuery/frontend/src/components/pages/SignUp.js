@@ -55,7 +55,7 @@ function SignUp() {
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Enter Email"
+                  placeholder="Email Address"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -67,7 +67,7 @@ function SignUp() {
                   type="text"
                   id="username"
                   name="username"
-                  placeholder="Enter Username"
+                  placeholder="Username"
                   value={formData.username}
                   onChange={handleChange}
                   required
@@ -79,7 +79,7 @@ function SignUp() {
                   type="password"
                   id="signup-password"
                   name="password"
-                  placeholder="Enter Password"
+                  placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
                   required
@@ -100,7 +100,7 @@ function SignUp() {
               <button type="submit">Sign Up</button>
             </form>
             <div>
-              Already have an account? <a href="/">Login</a>
+              Already have an account? <a href="/">Login here!</a>
             </div>
           </div>
           <div className="image-container">
@@ -110,10 +110,6 @@ function SignUp() {
               className="form-image"
             />
           </div>
-
-        <div style={{ textAlign: "center", marginTop: "1rem" }}>
-          Already have an account? <a href="/" style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}>Login here!</a>
-        </div>
       </div>
     </div>
     </div>

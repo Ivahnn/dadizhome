@@ -60,6 +60,12 @@ function Login() {
             <p>Login to your Account</p>
             <form onSubmit={handleLogin}>
               <div>
+              <button style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", border: "1px solid #cbd5e0", padding: "0.5rem 1rem", borderRadius: "9999px", marginTop: "1rem" }}>
+                <img src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" alt="Google" style={{ width: "1.25rem", marginRight: "0.5rem" }} />
+                <span>Sign in With Google</span>
+              </button>
+              </div>
+              <div>
                 <label htmlFor="email"></label>
                 <input
                   type="email"
