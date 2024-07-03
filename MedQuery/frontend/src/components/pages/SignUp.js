@@ -105,7 +105,7 @@ function SignUp() {
         </form>
 
         <div style={{ textAlign: "center", marginTop: "1rem" }}>
-          Already have an account? <a href="/" style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}>Login</a>
+          Already have an account? <a href="/" style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}>Login here!</a>
         </div>
       </div>
     </div>
