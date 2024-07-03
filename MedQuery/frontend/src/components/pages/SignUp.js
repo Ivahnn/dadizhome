@@ -111,18 +111,11 @@ function SignUp() {
             />
           </div>
 
-          <button
-            type="submit"
-            style={{ width: "100%", padding: "0.75rem", backgroundColor: "#38a169", color: "white", fontWeight: "600", borderRadius: "0.375rem", marginTop: "1.5rem", cursor: "pointer" }}
-          >
-            Register
-          </button>
-        </form>
-
         <div style={{ textAlign: "center", marginTop: "1rem" }}>
           Already have an account? <a href="/" style={{ color: "blue", textDecoration: "underline", cursor: "pointer" }}>Login here!</a>
         </div>
       </div>
+    </div>
     </div>
   );
 }
