@@ -22,6 +22,7 @@ pip install django-cors-headers
 ```sh
 cd frontend
 npm install
+npm install papaparse 
 ```
 ```sh
 npm run build
