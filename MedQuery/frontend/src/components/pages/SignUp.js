@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignUp.css"; // Import your CSS file
 
 function SignUp() {
@@ -10,6 +11,8 @@ function SignUp() {
     password: "",
     password2: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,6 +41,14 @@ function SignUp() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <div className="signup-container">
       <video autoPlay loop muted className="video-background">
@@ -55,7 +66,7 @@ function SignUp() {
                   type="email"
                   id="email"
                   name="email"
-                  placeholder="Enter Email"
+                  placeholder="Email Address"
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -67,28 +78,34 @@ function SignUp() {
                   type="text"
                   id="username"
                   name="username"
-                  placeholder="Enter Username"
+                  placeholder="Username"
                   value={formData.username}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div>
+              <div className="password-container">
                 <label htmlFor="signup-password"></label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="signup-password"
                   name="password"
-                  placeholder="Enter Password"
+                  placeholder="Password"
                   value={formData.password}
                   onChange={handleChange}
                   required
                 />
+                <span
+                  className="toggle-password-icon"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
               </div>
-              <div>
+              <div className="password-container">
                 <label htmlFor="signup-password2"></label>
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   id="signup-password2"
                   name="password2"
                   placeholder="Confirm Password"
@@ -96,14 +113,20 @@ function SignUp() {
                   onChange={handleChange}
                   required
                 />
+                <span
+                  className="toggle-password-icon"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
               </div>
               <button type="submit">Sign Up</button>
             </form>
             <div>
-              Already have an account? <a href="/">Login</a>
+              Already have an account? <a href="/">Login here!</a>
             </div>
           </div>
-          <div className="image-container">
+          <div className="image-containersignup">
             <img
               src="/images/singup.png"
               alt="Your Image"

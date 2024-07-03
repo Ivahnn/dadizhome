@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignUp.css";
 
 function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -43,6 +45,10 @@ function Login() {
     }
   };
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className="signup-container">
       <video autoPlay loop muted className="video-background">
@@ -66,10 +72,10 @@ function Login() {
                   required
                 />
               </div>
-              <div>
+              <div className="password-container">
                 <label htmlFor="password"></label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   name="password"
                   placeholder="Enter Password"
@@ -77,6 +83,25 @@ function Login() {
                   onChange={handleChange}
                   required
                 />
+                <span
+                  className="toggle-password-icon"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+              <div>
+                <a href="/" className="styled-link">
+                  Forgot Password?
+                </a>
+                <button className="google-signin-button">
+                  <img
+                    src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
+                    alt="Google"
+                    className="google-signin-img"
+                  />
+                  <span>Sign in With Google</span>
+                </button>
               </div>
               <button type="submit">Login</button>
             </form>
@@ -90,6 +115,22 @@ function Login() {
               alt="Login Image"
               className="form-image"
             />
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "0.5rem",
+              }}
+            >
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  whiteSpace: "nowrap",
+                }}
+              ></label>
+            </div>
           </div>
         </div>
       </div>

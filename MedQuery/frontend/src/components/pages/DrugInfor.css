@@ -1,29 +1,80 @@
-body {
-    font-family: Arial, sans-serif;
+.drug-infor-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center; /* Center text within the container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.container {
-    width: 50%;
-    margin: auto;
-    text-align: center;
-    padding-top: 50px;
+
+.drug-search-box {
+  margin-bottom: 20px;
+  text-align: center; /* Center text within the box */
 }
-.search-box {
-    margin-bottom: 20px;
+
+.drug-search-form {
+  display: flex;
+  justify-content: center; /* Center form elements horizontally */
+  align-items: center; /* Center form elements vertically */
+  flex-wrap: wrap;
 }
-select, input[type="text"] {
-    padding: 10px;
-    width: 100%;
-    margin-right: 5px;
+
+.search-form-group {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center; /* Align items vertically */
 }
-button {
-    padding: 10px;
+
+.search-type-select {
+  width: 150px;
+  margin-right: 10px; /* Adjust margin for spacing */
+  padding: 8px; /* Adjust padding for select box */
 }
-.no-selection {
-    padding-bottom: 200px;
-    padding-top: 200px;
-    border: 1px solid #ccc;
-    margin-top: 20px;
-    margin-bottom: 100px;
-    color: #999;
-    background-color: #f9f9f9;
+
+.drug-search-input {
+  width: 300px;
+  margin-right: 10px; /* Adjust margin for spacing */
+  padding: 8px; /* Adjust padding for input box */
+}
+
+.drug-search-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px; /* Adjust padding for button size */
+}
+
+.drug-search-btn:hover {
+  background-color: #0056b3;
+}
+
+.results-list {
+  list-style-type: none;
+  padding: 10px; /* Add padding around the results list */
+}
+
+.result-item {
+  margin-bottom: 20px;
+  padding: 25px; /* Add padding inside each result item */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.placeholder-image {
+  opacity: 1; /* Solid opacity */
+  width: 1000px; /* Image width */
+  height: 550px; /* Image height */
+  display: block;
+  margin: auto;
+  text-align: center; /* Center the image horizontally */
+}
+
+.side-effects {
+  text-align: justify; /* Justify the text */
+}
+.form-control {
+  margin-bottom: 10px;
 }

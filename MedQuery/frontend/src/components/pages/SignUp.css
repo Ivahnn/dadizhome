@@ -74,13 +74,13 @@
   }
   
   .form-details button {
-    width: 200px;
+    width: 250px;
     padding: 0.75rem;
     background-color: rgba(101, 167, 232, 1);
     color: white;
     font-weight: 600;
     border-radius: 50px;
-    margin-top: 1.5rem;
+  
     cursor: pointer;
   }
   
@@ -97,13 +97,63 @@
     align-items: center;
     margin-right: 132px;
     flex-grow: 1;
+    margin-top: 12.4px;
+  }
+
+  .image-containersignup{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 132px;
+    flex-grow: 1;
   }
   
  .form-image {
-  width: 200%; /* Adjust to fit your layout */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 100%; /* Ensure it doesn't exceed its container */
-  object-fit: cover; /* Cover the container while maintaining aspect ratio */
+  width: 200%;
+  height: auto; 
+  max-height: 100%; 
+  object-fit: cover; 
 }
+.password-container {
+  position: relative;
+}
+
+.toggle-password-icon {
+  position: absolute;
+  right: 12rem;
+  top: 46%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.google-signin-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border: 1px solid #cbd5e0;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  margin-top: 1rem;
+}
+
+.google-signin-img {
+  width: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.styled-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.75rem;
+  margin: 1rem; /* Adjust the margin as needed */
+}
+
+
 
   
