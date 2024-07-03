@@ -22,7 +22,7 @@ function DrugInfor() {
     } else {
       const matchedMedicine = medicines.find((medicine) =>
         medicine.toLowerCase().includes(searchInput.toLowerCase())
-      );
+      );  
       if (matchedMedicine) {
         setResult(`Found: ${matchedMedicine}`);
       } else {
