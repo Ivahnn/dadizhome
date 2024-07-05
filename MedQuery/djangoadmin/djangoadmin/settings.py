@@ -29,13 +29,18 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+SITE_ID = 3
 # Application definition
 
 INSTALLED_APPS = [
-    'backend',
-    'djangoadmin',
-    'rest_framework',
-    'corsheaders',
+    "django.contrib.sites", #new
+    "allauth", #new
+    "allauth.account", #new
+    "allauth.socialaccount", #new
+    "allauth.socialaccount.providers.google", #new
+    'backend', #new
+    'rest_framework', #new
+    'corsheaders', #new
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +48,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -113,9 +127,13 @@ CSRF_TRUSTED_ORIGINS = [ #new
 ]
 
 AUTHENTICATION_BACKENDS = [ #new
-    'django.contrib.auth.backends.ModelBackend',  # default backend
+    'django.contrib.auth.backends.ModelBackend',  # new
     'backend.authentication.EmailAuthBackend',    # your custom backend
+    'allauth.account.auth_backends.AuthenticationBackend'
 ]
+
+LOGIN_DIRECT_URL = "/"
+LOGOUT_DIRECT_URL = "/"
 
 
 # Internationalization
@@ -140,3 +158,11 @@ STATICFILES_DIRS = [os.path.join(REAL_BASE_DIR, 'frontend', 'build', 'static')]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'  # or 'optional'
+
+# Google OAuth credentials (replace with your actual credentials)
+SOCIALACCOUNT_GOOGLE_CLIENT_ID = "1066612399190-jt1l07c6ou8lrmra595re5ru4ou5op1n.apps.googleusercontent.com"
+SOCIALACCOUNT_GOOGLE_CLIENT_SECRET = "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"

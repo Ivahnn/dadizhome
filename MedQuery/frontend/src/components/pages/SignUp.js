@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./SignUp.css"; // Import your CSS file
+import { GoogleLogin } from "react-google-login";
+import "./SignUp.css"; // Ensure your CSS file is correctly imported
 
 function SignUp() {
   const navigate = useNavigate();
@@ -38,6 +39,36 @@ function SignUp() {
     }
   };
 
+  const googleSuccess = async (response) => {
+    const tokenId = response.tokenId;
+
+    try {
+      const googleResponse = await fetch(
+        "http://localhost:3000/accounts/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ tokenId }),
+        }
+      );
+
+      if (googleResponse.ok) {
+        navigate("/home");
+      } else {
+        let error = await googleResponse.json();
+        console.error("Google Sign-Up failed:", error);
+      }
+    } catch (error) {
+      console.error("Error signing up with Google:", error);
+    }
+  };
+
+  const googleFailure = (error) => {
+    console.error("Google Sign-Up failed:", error);
+  };
+
   return (
     <div className="signup-container">
       <video autoPlay loop muted className="video-background">
@@ -50,7 +81,7 @@ function SignUp() {
             <p>Create an Account</p>
             <form onSubmit={handleSignUp}>
               <div>
-                <label htmlFor="email"></label>
+                <label htmlFor="email">Email:</label>
                 <input
                   type="email"
                   id="email"
@@ -62,7 +93,7 @@ function SignUp() {
                 />
               </div>
               <div>
-                <label htmlFor="username"></label>
+                <label htmlFor="username">Username:</label>
                 <input
                   type="text"
                   id="username"
@@ -74,7 +105,7 @@ function SignUp() {
                 />
               </div>
               <div>
-                <label htmlFor="signup-password"></label>
+                <label htmlFor="signup-password">Password:</label>
                 <input
                   type="password"
                   id="signup-password"
@@ -86,7 +117,7 @@ function SignUp() {
                 />
               </div>
               <div>
-                <label htmlFor="signup-password2"></label>
+                <label htmlFor="signup-password2">Confirm Password:</label>
                 <input
                   type="password"
                   id="signup-password2"
@@ -110,8 +141,17 @@ function SignUp() {
               className="form-image"
             />
           </div>
+          <div className="google-signup-container">
+            <GoogleLogin
+              clientId="1066612399190-jt1l07c6ou8lrmra595re5ru4ou5op1n.apps.googleusercontent.com"
+              buttonText="Sign up with Google"
+              onSuccess={googleSuccess}
+              onFailure={googleFailure}
+              cookiePolicy={"single_host_origin"}
+            />
+          </div>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
