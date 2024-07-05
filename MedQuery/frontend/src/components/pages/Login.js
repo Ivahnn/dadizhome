@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./SignUp.css";
 
 function Login() {
@@ -85,7 +85,7 @@ function Login() {
             <p>Login to your Account</p>
             <form onSubmit={handleLogin}>
               <div>
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email"></label>
                 <input
                   type="email"
                   id="email"
@@ -96,8 +96,8 @@ function Login() {
                   required
                 />
               </div>
-              <div>
-                <label htmlFor="password">Password:</label>
+              <div className="password-container">
+                <label htmlFor="password"></label>
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
@@ -107,6 +107,25 @@ function Login() {
                   onChange={handleChange}
                   required
                 />
+                <span
+                  className="toggle-password-icon"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+              <div>
+                <a href="/" className="styled-link">
+                  Forgot Password?
+                </a>
+                <button className="google-signin-button">
+                  <img
+                    src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
+                    alt="Google"
+                    className="google-signin-img"
+                  />
+                  <span>Sign in With Google</span>
+                </button>
               </div>
               <div>
                 <button type="submit">Login</button>
@@ -122,15 +141,21 @@ function Login() {
               alt="Login Pic"
               className="form-image"
             />
-            <div>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={showPassword}
-                  onChange={togglePasswordVisibility}
-                />
-                Show Password
-              </label>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "0.5rem",
+              }}
+            >
+              <label
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  whiteSpace: "nowrap",
+                }}
+              ></label>
             </div>
           </div>
           <div className="google-login-container">

@@ -3,6 +3,10 @@
   margin: auto;
   padding: 20px;
   text-align: center; /* Center text within the container */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .drug-search-box {
@@ -70,4 +74,7 @@
 
 .side-effects {
   text-align: justify; /* Justify the text */
+}
+.form-control {
+  margin-bottom: 10px;
 }

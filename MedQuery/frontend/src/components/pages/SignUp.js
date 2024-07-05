@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoogleLogin } from "react-google-login";
-import "./SignUp.css"; // Ensure your CSS file is correctly imported
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import "./SignUp.css"; // Import your CSS file
 
 function SignUp() {
   const navigate = useNavigate();
@@ -11,6 +11,8 @@ function SignUp() {
     password: "",
     password2: "",
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,6 +39,14 @@ function SignUp() {
     } catch (error) {
       console.error("Error signing up:", error);
     }
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
   };
 
   const googleSuccess = async (response) => {
@@ -104,10 +114,10 @@ function SignUp() {
                   required
                 />
               </div>
-              <div>
-                <label htmlFor="signup-password">Password:</label>
+              <div className="password-container">
+                <label htmlFor="signup-password"></label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="signup-password"
                   name="password"
                   placeholder="Password"
@@ -115,11 +125,17 @@ function SignUp() {
                   onChange={handleChange}
                   required
                 />
+                <span
+                  className="toggle-password-icon"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
               </div>
-              <div>
-                <label htmlFor="signup-password2">Confirm Password:</label>
+              <div className="password-container">
+                <label htmlFor="signup-password2"></label>
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   id="signup-password2"
                   name="password2"
                   placeholder="Confirm Password"
@@ -127,6 +143,22 @@ function SignUp() {
                   onChange={handleChange}
                   required
                 />
+                <span
+                  className="toggle-password-icon"
+                  onClick={toggleConfirmPasswordVisibility}
+                >
+                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+              <div>
+                <button className="google-signin-button">
+                  <img
+                    src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
+                    alt="Google"
+                    className="google-signin-img"
+                  />
+                  <span>Sign in With Google</span>
+                </button>
               </div>
               <button type="submit">Sign Up</button>
             </form>
@@ -134,20 +166,11 @@ function SignUp() {
               Already have an account? <a href="/">Login here!</a>
             </div>
           </div>
-          <div className="image-container">
+          <div className="image-containersignup">
             <img
               src="/images/singup.png"
               alt="Your Image"
               className="form-image"
-            />
-          </div>
-          <div className="google-signup-container">
-            <GoogleLogin
-              clientId="1066612399190-jt1l07c6ou8lrmra595re5ru4ou5op1n.apps.googleusercontent.com"
-              buttonText="Sign up with Google"
-              onSuccess={googleSuccess}
-              onFailure={googleFailure}
-              cookiePolicy={"single_host_origin"}
             />
           </div>
         </div>
