@@ -3,6 +3,39 @@ import "./Aboutus.css";
 import Navbar from "../Navbar.js";
 import Footer from "../Footer.js";
 
+const teamMembers = [
+  {
+    name: "GARCIA, IVAHNN B.",
+    image: "/images/ivahnpic.jpg",
+    description: "FRONTEND DEVELOPER",
+  },
+  {
+    name: "Member 2",
+    image: "/images/ivahnpic.jpg",
+    description: "Description for member 2.",
+  },
+  {
+    name: "Member 3",
+    image: "/images/ivahnpic.jpg",
+    description: "Description for member 3.",
+  },
+  {
+    name: "Member 4",
+    image: "/images/ivahnpic.jpg",
+    description: "Description for member 4.",
+  },
+  {
+    name: "Member 5",
+    image: "/images/ivahnpic.jpg",
+    description: "Description for member 5.",
+  },
+  {
+    name: "Member 6",
+    image: "/images/ivahnpic.jpg",
+    description: "Description for member 6.",
+  },
+];
+
 function About() {
   return (
     <>
@@ -38,6 +71,19 @@ function About() {
             years, sometimes by accident, sometimes on purpose (injected humour
             and the like).
           </p>
+
+          {/* Card section */}
+          <div className="about-cards">
+            {teamMembers.map((member, index) => (
+              <div key={index} className="card">
+                <img src={member.image} alt={`${member.name} Image`} />
+                <div className="card-content">
+                  <h3>{member.name}</h3>
+                  <p>{member.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

@@ -120,6 +120,16 @@ function SignUp() {
                   {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
+              <div>
+                <button className="google-signin-button">
+                  <img
+                    src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
+                    alt="Google"
+                    className="google-signin-img"
+                  />
+                  <span>Sign in With Google</span>
+                </button>
+              </div>
               <button type="submit">Sign Up</button>
             </form>
             <div>
