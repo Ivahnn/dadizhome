@@ -4,6 +4,7 @@ import "../../App.css";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
 import "./DrugInfor.css";
+import Carousel from "../Carousel";
 
 function DrugInfor() {
   const [searchInput, setSearchInput] = useState("");
@@ -20,6 +21,10 @@ function DrugInfor() {
         setMedicines(results.data);
         setIsLoading(false);
       },
+      error: function (error) {
+        console.error("Error loading CSV file:", error);
+        setIsLoading(false);
+      },
     });
   }, []);
 
@@ -27,7 +32,7 @@ function DrugInfor() {
     e.preventDefault();
     const searchTerm = searchInput.toLowerCase().trim();
 
-    if (!medicines) {
+    if (!medicines.length) {
       console.error("Medicines data is not loaded.");
       return;
     }
@@ -44,9 +49,18 @@ function DrugInfor() {
     setResults(filteredResults);
   };
 
+  const images = [
+    "images/slider0.png",
+    "images/slider4.png",
+    "images/slider5.png",
+    "images/slider8.png",
+    "images/slider6.png"
+  ];
+
   return (
     <>
       <Navbar />
+      <Carousel images={images} />
       <div className="container drug-infor-container">
         <h3>How do you want to search for drug information?</h3>
         <div className="drug-search-box">
@@ -57,6 +71,7 @@ function DrugInfor() {
                 className="form-control search-type-select"
                 value={searchType}
                 onChange={(e) => setSearchType(e.target.value)}
+                aria-label="Select search type"
               >
                 <option value="Generic">By Generic Name</option>
                 <option value="Brand">By Brand Name</option>
@@ -69,6 +84,7 @@ function DrugInfor() {
                 type="text"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
+                aria-label="Search for a medicine"
               />
             </div>
             <div className="search-form-group">
@@ -102,7 +118,8 @@ function DrugInfor() {
                     <strong>Brand Names:</strong> {medicine.brand_names}
                   </p>
                   <p>
-                    <strong>Medical Condition:</strong> {medicine.medical_condition}
+                    <strong>Medical Condition:</strong>{" "}
+                    {medicine.medical_condition}
                   </p>
                   <p className="side-effects">
                     <strong>Side Effects:</strong> {medicine.side_effects}

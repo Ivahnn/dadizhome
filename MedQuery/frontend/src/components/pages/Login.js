@@ -12,6 +12,11 @@ function Login() {
     e.preventDefault();
     const { email, password } = formData;
 
+    if (!email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     try {
       const response = await fetch("http://127.0.0.1:8000/auth/login/", {
         method: "POST",
@@ -28,10 +33,14 @@ function Login() {
         navigate("/home");
       } else {
         let error = await response.json();
+        alert(
+          "Login failed: Incorrect email or password. Click Sign Up if you don't have an account."
+        );
         console.error("Login failed:", error);
       }
     } catch (error) {
       console.error("Error logging in:", error);
+      alert("Error logging in. Please try again later.");
     }
   };
 

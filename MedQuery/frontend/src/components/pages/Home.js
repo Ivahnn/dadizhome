@@ -5,9 +5,11 @@ import Cards from '../CardItem'; // Corrected import for Cards component
 import Footer from '../Footer';
 import Navbar from '../Navbar';
 
+
 function Home() {
   return (
     <>
+ 
       <Navbar />
       <div className="hero-container">
         <video src="/videos/newvid.mp4" autoPlay loop muted />
