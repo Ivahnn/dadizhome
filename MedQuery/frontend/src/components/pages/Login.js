@@ -141,7 +141,7 @@ function Login() {
               </div>
             </form>
             <div>
-              <a href="/signup">Don't have an account? Sign Up</a>
+              Don't have an account? <a href="/signup"> Sign Up</a>
             </div>
           </div>
           <div className="image-container">
@@ -167,7 +167,7 @@ function Login() {
               ></label>
             </div>
           </div>
-          <div className="google-login-container">
+          {/* <div className="google-login-container">
             <GoogleLogin
               clientId="1066612399190-jt1l07c6ou8lrmra595re5ru4ou5op1n.apps.googleusercontent.com"
               buttonText="Sign in with Google"
@@ -175,7 +175,7 @@ function Login() {
               onFailure={googleFailure}
               cookiePolicy={"single_host_origin"}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

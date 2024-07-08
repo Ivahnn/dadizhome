@@ -104,7 +104,7 @@ function SignUp() {
             <p>Create an Account</p>
             <form onSubmit={handleSignUp}>
               <div>
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email"></label>
                 <input
                   type="email"
                   id="email"
@@ -116,7 +116,7 @@ function SignUp() {
                 />
               </div>
               <div>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username"></label>
                 <input
                   type="text"
                   id="username"
