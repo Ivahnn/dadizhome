@@ -62,6 +62,36 @@ function SignUp() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
+  const googleSuccess = async (response) => {
+    const tokenId = response.tokenId;
+
+    try {
+      const googleResponse = await fetch(
+        "http://localhost:3000/accounts/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ tokenId }),
+        }
+      );
+
+      if (googleResponse.ok) {
+        navigate("/home");
+      } else {
+        let error = await googleResponse.json();
+        console.error("Google Sign-Up failed:", error);
+      }
+    } catch (error) {
+      console.error("Error signing up with Google:", error);
+    }
+  };
+
+  const googleFailure = (error) => {
+    console.error("Google Sign-Up failed:", error);
+  };
+
   return (
     <div className="signup-container">
       <video autoPlay loop muted className="video-background">
@@ -74,7 +104,7 @@ function SignUp() {
             <p>Create an Account</p>
             <form onSubmit={handleSignUp}>
               <div>
-                <label htmlFor="email"></label>
+                <label htmlFor="email">Email:</label>
                 <input
                   type="email"
                   id="email"
@@ -86,7 +116,7 @@ function SignUp() {
                 />
               </div>
               <div>
-                <label htmlFor="username"></label>
+                <label htmlFor="username">Username:</label>
                 <input
                   type="text"
                   id="username"
