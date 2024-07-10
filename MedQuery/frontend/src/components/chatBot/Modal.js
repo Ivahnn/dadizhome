@@ -1,20 +1,44 @@
 import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import classes from "./ChatBot.module.css";
 
-export default function Modal({ children, open, onClose, className = ''}) {
+export default function Modal({ children, open, onClose, className = '' }) {
   const dialog = useRef();
 
   useEffect(() => {
-    // To avoid ref error, new value, and to close the modal
-    const modal = dialog.current
+    const modal = dialog.current;
     if (open) {
       modal.showModal();
+    } else {
+      modal.close();
     }
-    return () => modal.close()
-  }, [open]);
+
+    // Close modal when clicking outside the content area
+    const handleOutsideClick = (event) => {
+      if (event.target === modal) {
+        onClose();
+      }
+    };
+
+    modal.addEventListener('click', handleOutsideClick);
+    return () => {
+      modal.removeEventListener('click', handleOutsideClick);
+    };
+  }, [open, onClose]);
 
   return createPortal(
-    <dialog ref={dialog} className={`modal ${className}`} onClose={onClose}>{children}</dialog>,
-    document.getElementById("modal")
+    <dialog
+      ref={dialog}
+      className={`${classes.modal} ${className}`}
+      onClick={(e) => e.stopPropagation()}
+    >
+      <div className={classes.content}>
+        {children}
+        <button className={classes.closeButton} onClick={onClose}>
+          &times;
+        </button>
+      </div>
+    </dialog>,
+    document.getElementById("modal-root")
   );
 }

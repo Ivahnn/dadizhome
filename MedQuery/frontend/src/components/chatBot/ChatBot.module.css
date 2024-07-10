@@ -1,3 +1,14 @@
+/* Modal.module.css */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+}
+
 .modal {
   background-color: #e4ddd4;
   border-radius: 6px;
@@ -7,10 +18,11 @@
   width: 80%;
   max-width: 40rem;
   animation: fade-slide-up 0.3s ease-out forwards;
-}
-
-.modal::backdrop {
-  background-color: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
 }
 
 @keyframes fade-slide-up {
@@ -18,7 +30,6 @@
     opacity: 0;
     transform: translateY(4rem);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -39,6 +50,47 @@
 .modal-actions .text-button:active {
   color: #312c1d;
 }
+
+
+.button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffc404;
+  border: 1px solid #ffc404;
+  color: #1f1a09;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #ffab04;
+  border-color: #ffab04;
+  color: #1f1a09;
+}
+
+.text-button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ffc404;
+}
+
+.text-button:hover,
+.text-button:active {
+  color: #ffab04;
+}
+
+.card {
+  margin: 1rem auto;
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+}
+
 
 .cart {
   max-width: 30rem;

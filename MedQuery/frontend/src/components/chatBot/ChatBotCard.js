@@ -1,4 +1,4 @@
-import classes from './Chatbot.module.css';
+import classes from './ChatBot.module.css';
 
 const ChatBotCard = (props) => {
   return (

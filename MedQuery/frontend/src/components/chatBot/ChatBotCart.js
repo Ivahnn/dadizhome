@@ -1,16 +1,27 @@
-import { useSelector } from "react-redux";
-import classes from "./Cart.module.css";
-import ChatBotCard from "./ChatBotCard";
+import { useDispatch, useSelector } from 'react-redux';
+import classes from './ChatBot.module.css';
+import Modal from './Modal';
+import { modalActions } from '../../store';
 
-const Cart = (props) => {
-  const showModal = useSelector((state) => state.modal.isOpen);
+const ChatBotCart = () => {
+  const dispatch = useDispatch();
+  const showModal = useSelector((state) => state.modal.modalIsOpen);
+
+  const closeModal = () => {
+    dispatch(modalActions.toggleModal());
+  };
+
+  console.log('ChatBotCart render:', showModal);
 
   return (
-    <ChatBotCard className={classes.cart}>
-      <h2>Your Shopping Cart</h2>
-      
-    </ChatBotCard>
+    <Modal
+      className={classes.cart}
+      open={showModal}
+      onClose={closeModal}
+    >
+      <h2>Your Cart</h2>
+    </Modal>
   );
 };
 
-export default Cart;
+export default ChatBotCart;
