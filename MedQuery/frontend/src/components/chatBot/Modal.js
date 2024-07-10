@@ -15,7 +15,7 @@ export default function Modal({ children, open, onClose, className = '' }) {
 
     // Close modal when clicking outside the content area
     const handleOutsideClick = (event) => {
-      if (event.target === modal) {
+      if (event.target.nodeName === 'DIALOG') {
         onClose();
       }
     };
@@ -30,14 +30,8 @@ export default function Modal({ children, open, onClose, className = '' }) {
     <dialog
       ref={dialog}
       className={`${classes.modal} ${className}`}
-      onClick={(e) => e.stopPropagation()}
     >
-      <div className={classes.content}>
-        {children}
-        <button className={classes.closeButton} onClick={onClose}>
-          &times;
-        </button>
-      </div>
+      {children}
     </dialog>,
     document.getElementById("modal-root")
   );

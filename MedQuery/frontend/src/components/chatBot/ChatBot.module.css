@@ -7,6 +7,9 @@
   height: 100%;
   background: rgba(0, 0, 0, 0.55);
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal {
@@ -18,10 +21,7 @@
   width: 80%;
   max-width: 40rem;
   animation: fade-slide-up 0.3s ease-out forwards;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   z-index: 1001;
 }
 
@@ -50,7 +50,6 @@
 .modal-actions .text-button:active {
   color: #312c1d;
 }
-
 
 .cart {
   max-width: 30rem;
@@ -107,18 +106,6 @@
   width: 90%;
   max-width: 40rem;
 }
-
-
-
-.card {
-  margin: 1rem auto;
-  border-radius: 6px;
-  background-color: white;
-  padding: 1rem;
-  width: 90%;
-  max-width: 40rem;
-}
-
 
 .stickyButton {
   position: fixed;
