@@ -42,6 +42,7 @@ function SignUp() {
       });
 
       if (response.ok) {
+        localStorage.setItem("userEmail", email); // Save the email
         navigate("/"); // Redirect to login page after successful signup
       } else {
         const errorData = await response.json();
@@ -66,18 +67,17 @@ function SignUp() {
     const tokenId = response.tokenId;
 
     try {
-      const googleResponse = await fetch(
-        "http://localhost:3000/accounts/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ tokenId }),
-        }
-      );
+      const googleResponse = await fetch("http://localhost:3000/accounts/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tokenId }),
+      });
 
       if (googleResponse.ok) {
+        const data = await googleResponse.json();
+        localStorage.setItem("userEmail", data.email); // Assuming the response contains an 'email' field
         navigate("/home");
       } else {
         let error = await googleResponse.json();

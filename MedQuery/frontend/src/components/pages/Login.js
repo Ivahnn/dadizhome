@@ -23,13 +23,12 @@ function Login() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("userEmail", email);
         navigate("/home");
       } else {
         let error = await response.json();
@@ -48,18 +47,17 @@ function Login() {
     const tokenId = response.tokenId;
 
     try {
-      const googleResponse = await fetch(
-        "http://localhost:3000/auth/google/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ tokenId }),
-        }
-      );
+      const googleResponse = await fetch("http://localhost:3000/auth/google/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tokenId }),
+      });
 
       if (googleResponse.ok) {
+        const data = await googleResponse.json();
+        localStorage.setItem("userEmail", data.email);
         navigate("/home");
       } else {
         let error = await googleResponse.json();
@@ -127,6 +125,10 @@ function Login() {
                 <a href="/" className="styled-link">
                   Forgot Password?
                 </a>
+                <div>
+                  <button type="submit">Login</button>
+                </div>
+                <div className="divider"></div>
                 <button className="google-signin-button">
                   <img
                     src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
@@ -135,9 +137,6 @@ function Login() {
                   />
                   <span>Sign in With Google</span>
                 </button>
-              </div>
-              <div>
-                <button type="submit">Login</button>
               </div>
             </form>
             <div>
@@ -167,15 +166,6 @@ function Login() {
               ></label>
             </div>
           </div>
-          {/* <div className="google-login-container">
-            <GoogleLogin
-              clientId="1066612399190-jt1l07c6ou8lrmra595re5ru4ou5op1n.apps.googleusercontent.com"
-              buttonText="Sign in with Google"
-              onSuccess={googleSuccess}
-              onFailure={googleFailure}
-              cookiePolicy={"single_host_origin"}
-            />
-          </div> */}
         </div>
       </div>
     </div>

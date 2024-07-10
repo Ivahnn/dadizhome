@@ -2,7 +2,7 @@
   max-width: 800px;
   margin: auto;
   padding: 20px;
-  text-align: center; /* Center text within the container */
+  text-align: center; 
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,32 +11,55 @@
 
 .drug-search-box {
   margin-bottom: 20px;
-  text-align: center; /* Center text within the box */
+  text-align: center;
 }
 
 .drug-search-form {
   display: flex;
-  justify-content: center; /* Center form elements horizontally */
-  align-items: center; /* Center form elements vertically */
+  justify-content: center; 
+  align-items: center; 
   flex-wrap: wrap;
 }
 
 .search-form-group {
   margin-bottom: 10px;
   display: flex;
-  align-items: center; /* Align items vertically */
+  align-items: center; 
+  position: relative;
 }
 
 .search-type-select {
   width: 150px;
-  margin-right: 10px; /* Adjust margin for spacing */
-  padding: 8px; /* Adjust padding for select box */
+  margin-right: 10px; 
+  padding: 8px; 
 }
 
 .drug-search-input {
   width: 300px;
-  margin-right: 10px; /* Adjust margin for spacing */
-  padding: 8px; /* Adjust padding for input box */
+  margin-right: 10px; 
+  padding: 8px; 
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
 }
 
 .drug-search-btn {
@@ -44,7 +67,7 @@
   color: white;
   border: none;
   cursor: pointer;
-  padding: 10px 20px; /* Adjust padding for button size */
+  padding: 10px 20px; 
 }
 
 .drug-search-btn:hover {
@@ -53,28 +76,29 @@
 
 .results-list {
   list-style-type: none;
-  padding: 10px; /* Add padding around the results list */
+  padding: 10px; 
 }
 
 .result-item {
   margin-bottom: 20px;
-  padding: 25px; /* Add padding inside each result item */
+  padding: 25px; 
   border: 1px solid #ddd;
   border-radius: 5px;
 }
 
 .placeholder-image {
-  opacity: 1; /* Solid opacity */
-  width: 1000px; /* Image width */
-  height: 550px; /* Image height */
+  opacity: 1; 
+  width: 1000px; 
+  height: 550px;
   display: block;
   margin: auto;
-  text-align: center; /* Center the image horizontally */
+  text-align: center; 
 }
 
 .side-effects {
-  text-align: justify; /* Justify the text */
+  text-align: justify; 
 }
+
 .form-control {
   margin-bottom: 10px;
 }

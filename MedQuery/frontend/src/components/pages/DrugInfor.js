@@ -11,6 +11,7 @@ function DrugInfor() {
   const [searchType, setSearchType] = useState("Generic");
   const [results, setResults] = useState([]);
   const [medicines, setMedicines] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -32,6 +33,11 @@ function DrugInfor() {
     e.preventDefault();
     const searchTerm = searchInput.toLowerCase().trim();
 
+    if (!searchTerm) {
+      alert("Please input Medicine in search bar.");
+      return;
+    }
+
     if (!medicines.length) {
       console.error("Medicines data is not loaded.");
       return;
@@ -47,6 +53,35 @@ function DrugInfor() {
     });
 
     setResults(filteredResults);
+    setSuggestions([]);
+  };
+
+  const handleInputChange = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    setSearchInput(searchTerm);
+
+    if (!searchTerm) {
+      setSuggestions([]);
+      return;
+    }
+
+    const suggestionResults = medicines
+      .filter((medicine) => {
+        if (searchType === "Generic" && medicine.generic_name) {
+          return medicine.generic_name.toLowerCase().includes(searchTerm);
+        } else if (searchType === "Brand" && medicine.brand_names) {
+          return medicine.brand_names.toLowerCase().includes(searchTerm);
+        }
+        return false;
+      })
+      .slice(0, 5); 
+
+    setSuggestions(suggestionResults);
+  };
+
+  const selectSuggestion = (suggestion) => {
+    setSearchInput(suggestion);
+    setSuggestions([]);
   };
 
   const images = [
@@ -54,7 +89,7 @@ function DrugInfor() {
     "images/slider4.png",
     "images/slider5.png",
     "images/slider8.png",
-    "images/slider6.png"
+    "images/slider6.png",
   ];
 
   return (
@@ -83,9 +118,26 @@ function DrugInfor() {
                 placeholder="Search for a medicine..."
                 type="text"
                 value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
+                onChange={handleInputChange}
                 aria-label="Search for a medicine"
               />
+              {suggestions.length > 0 && (
+                <ul className="suggestions-list">
+                  {suggestions.map((suggestion, index) => (
+                    <li
+                      key={index}
+                      className="suggestion-item"
+                      onClick={() =>
+                        selectSuggestion(
+                          suggestion.generic_name || suggestion.brand_names
+                        )
+                      }
+                    >
+                      {suggestion.generic_name || suggestion.brand_names}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
             <div className="search-form-group">
               <button className="btn btn-primary drug-search-btn" type="submit">
