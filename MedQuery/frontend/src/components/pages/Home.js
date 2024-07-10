@@ -15,15 +15,13 @@ function Home() {
   return (
     <>
       <Navbar />
-      {showModal && <ChatBotCart />} {/* Render ChatBotCart when showModal is true */}
+      {showModal && <ChatBotCart />}
       <div className="hero-container">
         <video src="/videos/newvid.mp4" autoPlay loop muted />
         <h1>Welcome to MedQuery</h1>
         <p>Your Digital Medical Advisor</p>
       </div>
       <ChatBotButton />
-      {console.log(showModal)}
-
       <Cards />
       <Footer />
     </>

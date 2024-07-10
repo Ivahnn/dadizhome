@@ -15,11 +15,21 @@ const ChatBotCart = () => {
 
   return (
     <Modal
-      className={classes.cart}
+      className={classes.modal}
       open={showModal}
       onClose={closeModal}
     >
-      <h2>Your Cart</h2>
+      <h2>Your Cart, Hello</h2>
+      <p>
+        <button onClick={closeModal}>Close</button>
+      </p>
+      <iframe 
+        src="http://localhost:8501" // Adjust the URL based on where your Streamlit app is running
+        width="100%"
+        height="600px"
+        style={{ border: 'none' }}
+        title="Streamlit App"
+      ></iframe>
     </Modal>
   );
 };
