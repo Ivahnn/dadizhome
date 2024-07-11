@@ -100,8 +100,7 @@ function SignUp() {
       <div className="form-container">
         <div className="form-content">
           <div className="form-details">
-            <h2>MedQuery</h2>
-            <p>Create an Account</p>
+            <h2 style={{fontFamily:"Winthorpe",marginLeft:"15%"}}>MedQuery</h2>
             <form onSubmit={handleSignUp}>
               <div>
                 <label htmlFor="email"></label>
@@ -164,20 +163,23 @@ function SignUp() {
                 </span>
               </div>
               <div>
-                <button className="google-signin-button" type="button">
+              <a href="/" className="styled-link">Already have an account?</a>
+            </div>
+              
+              <button type="submit" style={{marginTop:"15px"}}>Sign Up</button>
+              <div className="divider"></div>
+              <div>
+              <button className="google-signin-button" style={{backgroundColor:"#ffffff"}}>
                   <img
                     src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
                     alt="Google"
                     className="google-signin-img"
                   />
-                  <span>Sign in With Google</span>
+                  <span className="google"  type="submit" style={{fontFamily:"Constantia", fontWeight:"400",  color:"#656565",}}>Sign in With Google</span>
                 </button>
               </div>
-              <button type="submit">Sign Up</button>
             </form>
-            <div>
-              Already have an account? <a href="/">Login here!</a>
-            </div>
+            
           </div>
           <div className="image-containersignup">
             <img
