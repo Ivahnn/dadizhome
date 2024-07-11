@@ -28,6 +28,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "start-all": "concurrently \"npm start\" \"cd ../djangoadmin && python manage.py runserver\" \"cd ../djangoadmin && streamlit run .\\app3.py\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

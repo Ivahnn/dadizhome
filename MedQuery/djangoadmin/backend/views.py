@@ -28,7 +28,7 @@ def user_login(request):
             user = authenticate(email=email, password=password)
             if user:
                 login(request, user)
-                return JsonResponse({'success': True, 'message': 'Login successful'})
+                return JsonResponse({'success': True, 'username': user.username, 'message': 'Login successful'})
             else:
                 return JsonResponse({'success': False, 'message': 'Invalid credentials'}, status=400)
         except json.JSONDecodeError:

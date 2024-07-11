@@ -63,34 +63,34 @@ function SignUp() {
     setShowConfirmPassword(!showConfirmPassword);
   };
 
-  const googleSuccess = async (response) => {
-    const tokenId = response.tokenId;
+  // const googleSuccess = async (response) => {
+  //   const tokenId = response.tokenId;
 
-    try {
-      const googleResponse = await fetch("http://localhost:3000/accounts/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ tokenId }),
-      });
+  //   try {
+  //     const googleResponse = await fetch("http://localhost:3000/accounts/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ tokenId }),
+  //     });
 
-      if (googleResponse.ok) {
-        const data = await googleResponse.json();
-        localStorage.setItem("userEmail", data.email); // Assuming the response contains an 'email' field
-        navigate("/home");
-      } else {
-        let error = await googleResponse.json();
-        console.error("Google Sign-Up failed:", error);
-      }
-    } catch (error) {
-      console.error("Error signing up with Google:", error);
-    }
-  };
+  //     if (googleResponse.ok) {
+  //       const data = await googleResponse.json();
+  //       localStorage.setItem("userEmail", data.email); // Assuming the response contains an 'email' field
+  //       navigate("/home");
+  //     } else {
+  //       let error = await googleResponse.json();
+  //       console.error("Google Sign-Up failed:", error);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error signing up with Google:", error);
+  //   }
+  // };
 
-  const googleFailure = (error) => {
-    console.error("Google Sign-Up failed:", error);
-  };
+  // const googleFailure = (error) => {
+  //   console.error("Google Sign-Up failed:", error);
+  // };
 
   return (
     <div className="signup-container">

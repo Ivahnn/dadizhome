@@ -20,7 +20,7 @@ function DrugInfor() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Papa.parse("/MEDICINE_final.csv", {
+    Papa.parse("/MEDICINE_cleaned.csv", {
       download: true,
       header: true,
       complete: function (results) {
@@ -34,32 +34,44 @@ function DrugInfor() {
     });
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const searchTerm = searchInput.toLowerCase().trim();
+const handleSearch = (e) => {
+  e.preventDefault();
+  const searchTerm = searchInput.toLowerCase().trim();
 
-    if (!searchTerm) {
-      alert("Please input Medicine in search bar.");
-      return;
+  if (!searchTerm) {
+    alert("Please input Medicine in search bar.");
+    return;
+  }
+
+  if (!medicines.length) {
+    console.error("Medicines data is not loaded.");
+    return;
+  }
+
+  const filteredResults = medicines.filter((medicine, index, self) => {
+    if (searchType === "Generic" && medicine.generic_name) {
+      return (
+        medicine.generic_name.toLowerCase().startsWith(searchTerm) &&
+        self.findIndex((m) => m.generic_name === medicine.generic_name) === index
+      );
+    } else if (searchType === "Brand" && medicine.brand_names) {
+      return (
+        medicine.brand_names
+          .toLowerCase()
+          .split(",")
+          .some((brandName) =>
+            brandName.trim().toLowerCase().startsWith(searchTerm)
+          ) &&
+        self.findIndex((m) => m.brand_names === medicine.brand_names) === index
+      );
     }
+    return false;
+  });
 
-    if (!medicines.length) {
-      console.error("Medicines data is not loaded.");
-      return;
-    }
+  setResults(filteredResults);
+  setSuggestions([]);
+};
 
-    const filteredResults = medicines.filter((medicine) => {
-      if (searchType === "Generic" && medicine.generic_name) {
-        return medicine.generic_name.toLowerCase().includes(searchTerm);
-      } else if (searchType === "Brand" && medicine.brand_names) {
-        return medicine.brand_names.toLowerCase().includes(searchTerm);
-      }
-      return false;
-    });
-
-    setResults(filteredResults);
-    setSuggestions([]);
-  };
 
   const handleInputChange = (e) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -73,13 +85,16 @@ function DrugInfor() {
     const suggestionResults = medicines
       .filter((medicine) => {
         if (searchType === "Generic" && medicine.generic_name) {
-          return medicine.generic_name.toLowerCase().includes(searchTerm);
+          return medicine.generic_name.toLowerCase().startsWith(searchTerm);
         } else if (searchType === "Brand" && medicine.brand_names) {
-          return medicine.brand_names.toLowerCase().includes(searchTerm);
+          return medicine.brand_names
+            .toLowerCase()
+            .split(',')
+            .some((brandName) => brandName.trim().startsWith(searchTerm));
         }
         return false;
       })
-      .slice(0, 5); 
+      .slice(0, 5); // Limit to 5 suggestions
 
     setSuggestions(suggestionResults);
   };

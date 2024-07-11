@@ -27,7 +27,6 @@ function Login() {
       });
 
       if (response.ok) {
-        const data = await response.json();
         localStorage.setItem("userEmail", email);
         navigate("/home");
       } else {
@@ -43,34 +42,34 @@ function Login() {
     }
   };
 
-  const googleSuccess = async (response) => {
-    const tokenId = response.tokenId;
+  // const googleSuccess = async (response) => {
+  //   const tokenId = response.tokenId;
 
-    try {
-      const googleResponse = await fetch("http://localhost:3000/auth/google/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ tokenId }),
-      });
+  //   try {
+  //     const googleResponse = await fetch("http://localhost:3000/auth/google/", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ tokenId }),
+  //     });
 
-      if (googleResponse.ok) {
-        const data = await googleResponse.json();
-        localStorage.setItem("userEmail", data.email);
-        navigate("/home");
-      } else {
-        let error = await googleResponse.json();
-        console.error("Google Sign-In failed:", error);
-      }
-    } catch (error) {
-      console.error("Error signing in with Google:", error);
-    }
-  };
+  //     if (googleResponse.ok) {
+  //       const data = await googleResponse.json();
+  //       localStorage.setItem("userEmail", data.email);
+  //       navigate("/home");
+  //     } else {
+  //       let error = await googleResponse.json();
+  //       console.error("Google Sign-In failed:", error);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error signing in with Google:", error);
+  //   }
+  // };
 
-  const googleFailure = (error) => {
-    console.error("Google Sign-In failed:", error);
-  };
+  // const googleFailure = (error) => {
+  //   console.error("Google Sign-In failed:", error);
+  // };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
