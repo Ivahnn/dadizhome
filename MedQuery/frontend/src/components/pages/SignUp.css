@@ -29,8 +29,11 @@
     justify-content: center;
     align-items: center;
     height: 600px; /* Adjust the height as per your requirement */
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
+    box-shadow: 9px 12px 74.2px 0px rgba(0, 0, 0, 0.55);
   }
   
   .form-content {
@@ -61,24 +64,23 @@
     margin-top: 1rem;
     font-size: 0.875rem;
     font-weight: 600;
-    color: #2d3748;
+    color: #c0c0c0;
     display: block;
     width: 100%;
   }
   
   .form-details input {
+    font-family: Constantia;
     width: 300px;
-    padding: 0.5rem;
     border: 1px solid #cbd5e0;
-    border-radius: 2rem;
-    margin-top: 0.5rem;
-    background-color: #edf2f7;
-    color: #2d3748;
+    border-radius: 50px;
+    background-color: #edf2f700;
+  
   }
   
   .form-details button {
     width: 300px;
-    padding: 0.75rem;
+    padding: 0.5rem 1rem;
     background-color: rgba(101, 167, 232, 1);
     color: white;
     font-weight: 600;
@@ -87,6 +89,19 @@
     cursor: pointer;
   }
   
+  
+
+  .google-signin-button {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    border: 1px solid #cbd5e0;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+  }
+ 
   .form-details div {
     text-align: left;
     margin-top: 0.2rem;
@@ -139,27 +154,33 @@
   font-size: 1.5rem;
 }
 
-.google-signin-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  border: 1px solid #cbd5e0;
-  padding: 0.5rem 1rem;
-  margin-top: 1rem;
-}
+
 
 .google-signin-img {
   width: 1.25rem;
   margin-right: 0.5rem;
+
+}
+.buttonShets{
+  margin-top: 50px;
+}
+.cacc{
+  margin-left: 5px;
+}
+.fpass{
+margin-left: 65px;
 }
 
 .styled-link {
-  color: blue;
-  text-decoration: underline;
+  color: #448678;
+  font-family: Constantia;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
   cursor: pointer;
-  padding: 0.75rem;
-  margin: 1rem; /* Adjust the margin as needed */
+  margin-top: 0;;
 }
 .divider {
   height: 2px;

@@ -88,8 +88,9 @@ function Login() {
       <div className="form-container">
         <div className="form-content">
           <div className="form-details">
-            <h2>MedQuery</h2>
-            <p>Login to your Account</p>
+            <img src="/images/caduceus.png" style={{marginLeft:"90px",
+                width:"110px",         
+              }}></img>
             <form onSubmit={handleLogin}>
               <div>
                 <label htmlFor="email"></label>
@@ -122,26 +123,26 @@ function Login() {
                 </span>
               </div>
               <div>
-                <a href="/" className="styled-link">
-                  Forgot Password?
-                </a>
+              <a href="/signup" className="styled-link cacc">Create an account</a>
+              <a href="/" className="styled-link fpass">Forgot Password?</a>   
+              </div>
+              <div >
+                
                 <div>
-                  <button type="submit">Login</button>
+                  <button className="buttonShets" type="submit">Login</button>
                 </div>
                 <div className="divider"></div>
-                <button className="google-signin-button">
+                <button className="google-signin-button" style={{backgroundColor:"#ffffff"}}>
                   <img
                     src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
                     alt="Google"
                     className="google-signin-img"
                   />
-                  <span>Sign in With Google</span>
+                  <span className="google"  type="submit" style={{fontFamily:"Constantia", fontWeight:"400",  color:"#656565",}}>Sign in With Google</span>
                 </button>
               </div>
             </form>
-            <div>
-              Don't have an account? <a href="/signup"> Sign Up</a>
-            </div>
+            
           </div>
           <div className="image-container">
             <img

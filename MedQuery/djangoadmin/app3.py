@@ -68,7 +68,7 @@ def initialize_model():
 
 def initialize_retriever(embedder):
     print_green("Loading Data...")
-    file_path = "banana.pdf"
+    file_path = "medQuery.pdf"
     loader = PDFPlumberLoader(file_path)
     docs = loader.load()
     

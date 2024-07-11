@@ -71,12 +71,12 @@ function Footer() {
       <section className="social-media">
         <div className="social-media-wrap">
           <div className="footer-logo">
-            <Link to="/" className="social-logo">
+            <Link to="/" className="social-logo" style={{fontFamily:"Winthorpe",}}>
               MedQuery
             
             </Link>
           </div>
-          <small className="website-rights">MedQuery© 2024</small>
+          <small className="website-rights" style={{fontFamily:"Winthorpe",}}>MedQuery© 2024</small>
 
           <div className="social-icons">
             <Link
