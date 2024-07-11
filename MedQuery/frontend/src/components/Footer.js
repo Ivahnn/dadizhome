@@ -8,7 +8,7 @@ function Footer() {
     <div className="footer-container">
       <section className="footer-subscription">
         <p className="footer-subscription-heading">
-          MedQuery: Your Digital Medical Advisor
+          <b style={{fontFamily:"Winthorpe"}}>MedQuery</b>: Your Digital Medical Advisor
         </p>
         <p className="footer-subscription-text">
           You can unsubscribe at any time.
@@ -21,19 +21,13 @@ function Footer() {
               type="email"
               placeholder="Your Email"
             />
-            <Button buttonStyle="btn--outline">Subscribe</Button>
+            <Button buttonStyle="btn--outline" style={{}}>Subscribe</Button>
           </form>
         </div>
       </section>
       <div className="footer-links">
         <div className="footer-link-wrapper">
-          <div className="footer-link-items">
-            <h2>About Us</h2>
-            <Link to="/aboutus">Our Beginnings</Link>
-            <Link to="/aboutus">The Story Behind the Name</Link>
-            <Link to="/aboutus">Meet the Team</Link>
-            <Link to="/contactus">Services</Link>
-          </div>
+          
           <div className="footer-link-items">
             <h2>Contact Us</h2>
             <Link to="/contactus">Contact</Link>
