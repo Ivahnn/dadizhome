@@ -12,26 +12,34 @@ function Login() {
     e.preventDefault();
     const { email, password } = formData;
 
+    if (!email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:8000/auth/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("userEmail", email);
         navigate("/home");
       } else {
         let error = await response.json();
+        alert(
+          "Login failed: Incorrect email or password. Click Sign Up if you don't have an account."
+        );
         console.error("Login failed:", error);
       }
     } catch (error) {
       console.error("Error logging in:", error);
+      alert("Error logging in. Please try again later.");
     }
   };
 
@@ -39,18 +47,17 @@ function Login() {
     const tokenId = response.tokenId;
 
     try {
-      const googleResponse = await fetch(
-        "http://localhost:3000/auth/google/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ tokenId }),
-        }
-      );
+      const googleResponse = await fetch("http://localhost:3000/auth/google/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tokenId }),
+      });
 
       if (googleResponse.ok) {
+        const data = await googleResponse.json();
+        localStorage.setItem("userEmail", data.email);
         navigate("/home");
       } else {
         let error = await googleResponse.json();
@@ -81,8 +88,9 @@ function Login() {
       <div className="form-container">
         <div className="form-content">
           <div className="form-details">
-            <h2>MedQuery</h2>
-            <p>Login to your Account</p>
+            <img src="/images/caduceus.png" style={{marginLeft:"90px",
+                width:"110px",         
+              }}></img>
             <form onSubmit={handleLogin}>
               <div>
                 <label htmlFor="email"></label>
@@ -115,25 +123,26 @@ function Login() {
                 </span>
               </div>
               <div>
-                <a href="/" className="styled-link">
-                  Forgot Password?
-                </a>
-                <button className="google-signin-button">
+              <a href="/signup" className="styled-link cacc">Create an account</a>
+              <a href="/" className="styled-link fpass">Forgot Password?</a>   
+              </div>
+              <div >
+                
+                <div>
+                  <button className="buttonShets" type="submit">Login</button>
+                </div>
+                <div className="divider"></div>
+                <button className="google-signin-button" style={{backgroundColor:"#ffffff"}}>
                   <img
                     src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
                     alt="Google"
                     className="google-signin-img"
                   />
-                  <span>Sign in With Google</span>
+                  <span className="google"  type="submit" style={{fontFamily:"Constantia", fontWeight:"400",  color:"#656565",}}>Sign in With Google</span>
                 </button>
               </div>
-              <div>
-                <button type="submit">Login</button>
-              </div>
             </form>
-            <div>
-              <a href="/signup">Don't have an account? Sign Up</a>
-            </div>
+            
           </div>
           <div className="image-container">
             <img
@@ -157,8 +166,6 @@ function Login() {
                 }}
               ></label>
             </div>
-          </div>
-          <div className="google-login-container">
           </div>
         </div>
       </div>

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "./Button";
 import "./Navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  const [, setButton] = useState(true);
+  const [dropdown, setDropdown] = useState(false);
+  const [button, setButton] = useState(true);
+  const [userEmail, setUserEmail] = useState("");
+
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
@@ -16,11 +18,21 @@ function Navbar() {
       setButton(true);
     }
   };
+
   useEffect(() => {
     showButton();
+    const email = localStorage.getItem("userEmail");
+    if (email) {
+      setUserEmail(email);
+    }
   }, []);
 
   window.addEventListener("resize", showButton);
+
+  const handleLogout = () => {
+    localStorage.removeItem("userEmail");
+    window.location.href = "/";
+  };
 
   return (
     <>
@@ -38,7 +50,6 @@ function Navbar() {
                 Home
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
                 to="/druginformation"
@@ -48,7 +59,6 @@ function Navbar() {
                 Drug information
               </Link>
             </li>
-
             <li className="nav-item">
               <Link
                 to="/aboutus"
@@ -58,22 +68,39 @@ function Navbar() {
                 About Us
               </Link>
             </li>
-
             <li className="nav-item">
-              <Link
-                to="/contactus"
-                className="nav-links"
-                onClick={closeMobileMenu}
+              <div
+                className="nav-links-mobile"
+                onClick={() => setDropdown(!dropdown)}
               >
-                Contact Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Button to="/" buttonStyle="btn--outline">
-                log-out <i className="fas fa-arrow-right" />
-              </Button>
+                {userEmail} 
+              </div>
+              {dropdown && (
+                <div className="dropdown-menu" >
+                  <Link to="/" className="dropdown-link" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </div>
+              )}
             </li>
           </ul>
+          {button && (
+            <div className="dropdown">
+              <button
+                className="btn--outline"
+                onClick={() => setDropdown(!dropdown)}
+              >
+                {userEmail}
+              </button>
+              {dropdown && (
+                <div className="dropdown-menu">
+                  <Link to="/" className="dropdown-link" onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </nav>
     </>

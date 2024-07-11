@@ -20,6 +20,18 @@ function SignUp() {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    const { email, password, password2 } = formData;
+
+    if (!email.includes("@")) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    if (password !== password2) {
+      alert("Passwords do not match. Please try again.");
+      return;
+    }
+
     try {
       const response = await fetch("http://127.0.0.1:8000/auth/signup/", {
         method: "POST",
@@ -30,6 +42,7 @@ function SignUp() {
       });
 
       if (response.ok) {
+        localStorage.setItem("userEmail", email); // Save the email
         navigate("/"); // Redirect to login page after successful signup
       } else {
         const errorData = await response.json();
@@ -38,6 +51,7 @@ function SignUp() {
       }
     } catch (error) {
       console.error("Error signing up:", error);
+      alert("Error signing up. Please try again later.");
     }
   };
 
@@ -53,18 +67,17 @@ function SignUp() {
     const tokenId = response.tokenId;
 
     try {
-      const googleResponse = await fetch(
-        "http://localhost:3000/accounts/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ tokenId }),
-        }
-      );
+      const googleResponse = await fetch("http://localhost:3000/accounts/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ tokenId }),
+      });
 
       if (googleResponse.ok) {
+        const data = await googleResponse.json();
+        localStorage.setItem("userEmail", data.email); // Assuming the response contains an 'email' field
         navigate("/home");
       } else {
         let error = await googleResponse.json();
@@ -91,7 +104,7 @@ function SignUp() {
             <p>Create an Account</p>
             <form onSubmit={handleSignUp}>
               <div>
-                <label htmlFor="email">Email:</label>
+                <label htmlFor="email"></label>
                 <input
                   type="email"
                   id="email"
@@ -103,7 +116,7 @@ function SignUp() {
                 />
               </div>
               <div>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username"></label>
                 <input
                   type="text"
                   id="username"
@@ -151,7 +164,7 @@ function SignUp() {
                 </span>
               </div>
               <div>
-                <button className="google-signin-button">
+                <button className="google-signin-button" type="button">
                   <img
                     src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA"
                     alt="Google"
