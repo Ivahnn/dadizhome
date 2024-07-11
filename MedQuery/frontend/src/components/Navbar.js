@@ -77,7 +77,7 @@ function Navbar() {
               </div>
               {dropdown && (
                 <div className="dropdown-menu" >
-                  <Link to="/" className="dropdown-link" onClick={handleLogout}>
+                  <Link to="/" className="dropdown-link" onClick={handleLogout}  >
                     Logout
                   </Link>
                 </div>
@@ -89,6 +89,7 @@ function Navbar() {
               <button
                 className="btn--outline"
                 onClick={() => setDropdown(!dropdown)}
+              
               >
                 {userEmail}
               </button>
