@@ -73,10 +73,10 @@ function Navbar() {
                 className="nav-links-mobile"
                 onClick={() => setDropdown(!dropdown)}
               >
-                {userEmail} <i className="fas fa-chevron-down" />
+                {userEmail} 
               </div>
               {dropdown && (
-                <div className="dropdown-menu">
+                <div className="dropdown-menu" >
                   <Link to="/" className="dropdown-link" onClick={handleLogout}>
                     Logout
                   </Link>
@@ -90,7 +90,7 @@ function Navbar() {
                 className="btn--outline"
                 onClick={() => setDropdown(!dropdown)}
               >
-                {userEmail} <i className="fas fa-chevron-down" />
+                {userEmail}
               </button>
               {dropdown && (
                 <div className="dropdown-menu">

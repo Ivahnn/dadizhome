@@ -38,14 +38,16 @@
   
   button {
     padding: 8px 16px;
-    background-color: #4caf50;
+    font-family: Constantia;
+    border-radius: 50px;
+    background-color: rgba(101, 167, 232, 1);
     color: #fff;
     border: none;
     cursor: pointer;
   }
   
   button:hover {
-    background-color: #45a049;
+    background-color:rgba(84, 137, 190, 1);
   }
 
 

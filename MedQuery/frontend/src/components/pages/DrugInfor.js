@@ -6,7 +6,12 @@ import Navbar from "../Navbar";
 import "./DrugInfor.css";
 import Carousel from "../Carousel";
 
+import ChatBotButton from "../chatBot/ChatBotButton";
+import ChatBotCart from "../chatBot/ChatBotCart";
+import { useSelector } from "react-redux";
+
 function DrugInfor() {
+  const showModal = useSelector((state) => state.modal.modalIsOpen);
   const [searchInput, setSearchInput] = useState("");
   const [searchType, setSearchType] = useState("Generic");
   const [results, setResults] = useState([]);
@@ -95,6 +100,8 @@ function DrugInfor() {
   return (
     <>
       <Navbar />
+      {showModal && <ChatBotCart />}
+      <ChatBotButton />
       <Carousel images={images} />
       <div className="container drug-infor-container">
         <h3>How do you want to search for drug information?</h3>
