@@ -26,6 +26,7 @@
   display: flex;
   align-items: center; 
   position: relative;
+  font-family: Constantia;
 }
 
 .search-type-select {
@@ -56,6 +57,8 @@
 .suggestion-item {
   padding: 10px;
   cursor: pointer;
+  font-family: Constantia;
+  text-align: left;
 }
 
 .suggestion-item:hover {
@@ -63,7 +66,8 @@
 }
 
 .drug-search-btn {
-  background-color: #007bff;
+  font-family: Constantia;
+  background-color: #65a7e8;
   color: white;
   border: none;
   cursor: pointer;
@@ -71,7 +75,7 @@
 }
 
 .drug-search-btn:hover {
-  background-color: #0056b3;
+  background-color: #5489BE;
 }
 
 .results-list {
