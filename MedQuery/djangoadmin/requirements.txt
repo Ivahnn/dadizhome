@@ -10,3 +10,4 @@ djangorestframework
 django-cors-headers
 django-allauth
 pyJWT
+tf-keras
