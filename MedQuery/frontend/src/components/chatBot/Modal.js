@@ -12,6 +12,8 @@ export default function Modal({ children, open, onClose, className = '' }) {
     } else {
       modal.close();
     }
+
+    // Close modal when clicking outside the content area
     const handleOutsideClick = (event) => {
       if (event.target.nodeName === 'DIALOG') {
         onClose();

@@ -39,48 +39,48 @@ function Cards() {
         <div className="cards__wrapper">
           <ul className="cards__items">
             <CardItem
-              src="images/article1.jpg"
-              text="Coronavirus disease (COVID-19) pandemic"
+              src="images/article1.png"
+              text="AR/VR innovations: Transforming healthcare through advanced technologies"
               label="Medicine"
               external={true}
-              path="https://www.who.int/europe/emergencies/situations/covid-19"
+              path="https://www.news-medical.net/whitepaper/20240708/ARVR-innovations-Transforming-healthcare-through-advanced-technologies.aspx"
             />
             <CardItem
-              src="images/article2.jpg"
-              text="What is Modern Medicine?"
+              src="images/article2.png"
+              text="60 years in the making: Nanoparticles revolutionize nucleotide delivery"
               label="Medicine"
               external={true}
-              path="https://www.medicalnewstoday.com/articles/323538?fbclid=IwAR01LhmYwYZdUywJ4f7yVv8uG84HlIYCeWdqLpo8HMd3hPjb47-URQ3cW8c#infectious-diseases"
+              path="https://www.news-medical.net/news/20240710/60-years-in-the-making-Nanoparticles-revolutionize-nucleotide-delivery.aspx"
             />
           </ul>
           <ul className="cards__items">
             <CardItem
-              src="images/oste.jpg"
-              text="Symptoms and signs of Osteoporosis"
+              src="images/article3.png"
+              text="Symptoms and signs of Diabetes"
               label="Disease"
               external={true}
-              path="https://www.mayoclinic.org/diseases-conditions/osteoarthritis/symptoms-causes/syc-20351925"
+              path="https://www.health.harvard.edu/topics/diabetes"
             />
             <CardItem
-              src="images/breast.jpg"
-              text="Early Indicators and Symptoms of Breast Cancer: Preventative Measures"
+              src="images/article4.png"
+              text="Everything you need to know about stroke"
               label="Disease"
               external={true}
-              path="https://www.who.int/news-room/fact-sheets/detail/breast-cancer"
+              path="https://www.medicalnewstoday.com/articles/7624#definition"
             />
             <CardItem
-              src="images/PREGNANCY.jpg"
-              text="Promoting Optimal Health and Wellness during Pregnancy: A Comprehensive Guide to Supporting a Healthy Pregnancy Journey"
+              src="images/article5.png"
+              text="Everything you need to know about hypertension (high blood pressure)"
               label="Health"
               external={true}
-              path="https://www.who.int/activities/promoting-healthy-pregnancy"
+              path="https://www.medicalnewstoday.com/articles/150109"
             />
             <CardItem
-              src="images/heat.jpg"
-              text="Mitigating the Risk of Heat-Related Illness: Recognizing Symptoms, Preventive Measures, and Treatment Options"
+              src="images/article6.png"
+              text="Cough and cold medications: Use them safely"
               label="Health"
               external={true}
-              path="https://www.mayoclinic.org/diseases-conditions/heat-stroke/symptoms-causes/syc-20353581"
+              path="https://www.medicalnewstoday.com/articles/16181"
             />
           </ul>
         </div>

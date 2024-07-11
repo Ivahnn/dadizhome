@@ -13,6 +13,7 @@ cd MedQuery
 
 ### Install the required Python packages:
 ```sh
+npm install concurrently
 pip install django
 pip install djangorestframework 
 pip install django-cors-headers
@@ -37,8 +38,8 @@ python manage.py migrate
 python manage.py runserver (dapat sabay to sa npm start)
 ```
 
-# RUN THIS CONCURRENTLY OR SABAY DAPAT. NPM ANG FRONTEND, PYTHON ANG BACKEND
+# RUN THIS FOR CONCURRENTLY. RUNNING 3 SCRIPTS AT ONCE MADAFUCKER
 ```sh
-npm start 
-python manage.py runserver 
+npm run start-all
+
 ```

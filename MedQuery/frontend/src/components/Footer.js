@@ -20,8 +20,8 @@ function Footer() {
               name="email"
               type="email"
               placeholder="Your Email"
-            />
-            <Button buttonStyle="btn--outline" style={{}}>Subscribe</Button>
+            style={{borderRadius:"50px"}}/>
+            <Button buttonStyle="btn--outline">Subscribe</Button>
           </form>
         </div>
       </section>

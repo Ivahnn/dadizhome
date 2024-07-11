@@ -20,7 +20,7 @@ function DrugInfor() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Papa.parse("/MEDICINE_final.csv", {
+    Papa.parse("/MEDICINE_cleaned.csv", {
       download: true,
       header: true,
       complete: function (results) {
@@ -34,32 +34,44 @@ function DrugInfor() {
     });
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    const searchTerm = searchInput.toLowerCase().trim();
+const handleSearch = (e) => {
+  e.preventDefault();
+  const searchTerm = searchInput.toLowerCase().trim();
 
-    if (!searchTerm) {
-      alert("Please input Medicine in search bar.");
-      return;
-    }
+  if (!searchTerm) {
+    alert("Please input Medicine in search bar.");
+    return;
+  }
 
     if (!medicines.length) {
-      console.error("Medicines data is not loaded.");
+      console.error("Medicine's data is not loaded.");
       return;
     }
 
-    const filteredResults = medicines.filter((medicine) => {
-      if (searchType === "Generic" && medicine.generic_name) {
-        return medicine.generic_name.toLowerCase().includes(searchTerm);
-      } else if (searchType === "Brand" && medicine.brand_names) {
-        return medicine.brand_names.toLowerCase().includes(searchTerm);
-      }
-      return false;
-    });
+  const filteredResults = medicines.filter((medicine, index, self) => {
+    if (searchType === "Generic" && medicine.generic_name) {
+      return (
+        medicine.generic_name.toLowerCase().startsWith(searchTerm) &&
+        self.findIndex((m) => m.generic_name === medicine.generic_name) === index
+      );
+    } else if (searchType === "Brand" && medicine.brand_names) {
+      return (
+        medicine.brand_names
+          .toLowerCase()
+          .split(",")
+          .some((brandName) =>
+            brandName.trim().toLowerCase().startsWith(searchTerm)
+          ) &&
+        self.findIndex((m) => m.brand_names === medicine.brand_names) === index
+      );
+    }
+    return false;
+  });
 
-    setResults(filteredResults);
-    setSuggestions([]);
-  };
+  setResults(filteredResults);
+  setSuggestions([]);
+};
+
 
   const handleInputChange = (e) => {
     const searchTerm = e.target.value.toLowerCase();
@@ -73,13 +85,16 @@ function DrugInfor() {
     const suggestionResults = medicines
       .filter((medicine) => {
         if (searchType === "Generic" && medicine.generic_name) {
-          return medicine.generic_name.toLowerCase().includes(searchTerm);
+          return medicine.generic_name.toLowerCase().startsWith(searchTerm);
         } else if (searchType === "Brand" && medicine.brand_names) {
-          return medicine.brand_names.toLowerCase().includes(searchTerm);
+          return medicine.brand_names
+            .toLowerCase()
+            .split(',')
+            .some((brandName) => brandName.trim().startsWith(searchTerm));
         }
         return false;
       })
-      .slice(0, 5); 
+      .slice(0, 5); // Limit to 5 suggestions
 
     setSuggestions(suggestionResults);
   };
@@ -104,19 +119,20 @@ function DrugInfor() {
       <ChatBotButton />
       <Carousel images={images} />
       <div className="container drug-infor-container">
-        <h3>How do you want to search for drug information?</h3>
-        <div className="drug-search-box">
-          <form onSubmit={handleSearch} className="drug-search-form">
-            <div className="search-form-group">
+        <h3 style={{fontFamily:"Winthorpe",fontSize:"20px"}}>How do you want to search for drug information?</h3>
+        <div className="drug-search-box" >
+          <form onSubmit={handleSearch} className="drug-search-form" >
+            <div className="search-form-group" >
               <select
                 name="searchtype"
                 className="form-control search-type-select"
                 value={searchType}
                 onChange={(e) => setSearchType(e.target.value)}
                 aria-label="Select search type"
+                style={{borderRadius:"50px",}}
               >
-                <option value="Generic">By Generic Name</option>
-                <option value="Brand">By Brand Name</option>
+                <option value="Generic">Generic</option>
+                <option value="Brand">Branded</option>
               </select>
             </div>
             <div className="search-form-group">
@@ -127,6 +143,7 @@ function DrugInfor() {
                 value={searchInput}
                 onChange={handleInputChange}
                 aria-label="Search for a medicine"
+                style={{borderRadius:"50px"}}
               />
               {suggestions.length > 0 && (
                 <ul className="suggestions-list">
@@ -146,8 +163,8 @@ function DrugInfor() {
                 </ul>
               )}
             </div>
-            <div className="search-form-group">
-              <button className="btn btn-primary drug-search-btn" type="submit">
+            <div className="search-form-group" >
+              <button className="btn btn-primary drug-search-btn" type="submit"  style={{borderRadius:"50px"}}>
                 <i className="fa fa-search search-icon"></i> Search
               </button>
             </div>
@@ -169,19 +186,19 @@ function DrugInfor() {
             <ul className="results-list">
               {results.map((medicine, index) => (
                 <li key={index} className="result-item">
-                  <h4>{medicine.drug_name}</h4>
-                  <p>
-                    <strong>Generic Name:</strong> {medicine.generic_name}
+                  <h4 style={{fontFamily:"Winthorpe"}}>{medicine.drug_name}</h4>
+                  <p  style={{fontFamily:"Constantia"}}>
+                    <strong  style={{fontFamily:"Winthorpe"}}>Generic Name:</strong> {medicine.generic_name}
                   </p>
-                  <p>
-                    <strong>Brand Names:</strong> {medicine.brand_names}
+                  <p style={{fontFamily:"Constantia"}}>
+                    <strong style={{fontFamily:"Constantia"}}>Brand Names:</strong> {medicine.brand_names}
                   </p>
-                  <p>
-                    <strong>Medical Condition:</strong>{" "}
+                  <p style={{fontFamily:"Constantia"}}>
+                    <strong style={{fontFamily:"Constantia"}}>Medical Condition:</strong>{" "}
                     {medicine.medical_condition}
                   </p>
-                  <p className="side-effects">
-                    <strong>Side Effects:</strong> {medicine.side_effects}
+                  <p className="side-effects" style={{fontFamily:"Constantia"}} >
+                    <strong style={{fontFamily:"Winthorpe"}} >Side Effects:</strong><br></br> {medicine.side_effects}
                   </p>
                 </li>
               ))}

@@ -6,7 +6,7 @@ function Navbar() {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [button, setButton] = useState(true);
-  const [userEmail, setUserEmail] = useState("");
+  const [userEmailPrefix, setUserEmailPrefix] = useState("");
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -23,7 +23,8 @@ function Navbar() {
     showButton();
     const email = localStorage.getItem("userEmail");
     if (email) {
-      setUserEmail(email);
+      const prefix = email.split("@")[0];
+      setUserEmailPrefix(prefix);
     }
   }, []);
 
@@ -73,11 +74,11 @@ function Navbar() {
                 className="nav-links-mobile"
                 onClick={() => setDropdown(!dropdown)}
               >
-                {userEmail} 
+                {userEmailPrefix} {}
               </div>
               {dropdown && (
                 <div className="dropdown-menu" >
-                  <Link to="/" className="dropdown-link" onClick={handleLogout}>
+                  <Link to="/" className="dropdown-link" onClick={handleLogout}  >
                     Logout
                   </Link>
                 </div>
@@ -89,8 +90,9 @@ function Navbar() {
               <button
                 className="btn--outline"
                 onClick={() => setDropdown(!dropdown)}
+              
               >
-                {userEmail}
+                {userEmailPrefix} {}
               </button>
               {dropdown && (
                 <div className="dropdown-menu">
