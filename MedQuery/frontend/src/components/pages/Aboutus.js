@@ -26,12 +26,12 @@ const teamMembers = [
   },
   {
     name: "Gonzales, Jace",
-    image: "/images/ivahnpic.jpg",
+    image: "/images/jace.jpg",
     description: "Back-end Developer",
   },
   {
     name: "Ronquillo, Rafael",
-    image: "/images/ivahnpic.jpg",
+    image: "/images/raf.jpg",
     description: "Back-end Developer",
   },
 ];
