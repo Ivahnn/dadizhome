@@ -159,13 +159,6 @@ function Login() {
             </div>
           </div>
           <div className="google-login-container">
-            <GoogleLogin
-              clientId="1066612399190-jt1l07c6ou8lrmra595re5ru4ou5op1n.apps.googleusercontent.com"
-              buttonText="Sign in with Google"
-              onSuccess={googleSuccess}
-              onFailure={googleFailure}
-              cookiePolicy={"single_host_origin"}
-            />
           </div>
         </div>
       </div>
