@@ -53,7 +53,7 @@ function About() {
       const deltaTime = timestamp - previousTimestamp;
       previousTimestamp = timestamp;
 
-      currentScrollLeft += step * deltaTime / 16;
+      currentScrollLeft += (step * deltaTime) / 16;
 
       if (scrollRef.current) {
         const { scrollWidth, clientWidth } = scrollRef.current;
@@ -69,7 +69,7 @@ function About() {
 
     animationFrameId = requestAnimationFrame(animateScroll);
 
-    return () => cancelAnimationFrame(animationFrameId); 
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
   return (
@@ -78,7 +78,13 @@ function About() {
       <div className="about-container">
         <div className="about-content">
           <div>
-            <h2 style={{ fontFamily: "Constantia", color: "#000000", textAlign: "center" }}>
+            <h2
+              style={{
+                fontFamily: "Constantia",
+                color: "#000000",
+                textAlign: "center",
+              }}
+            >
               Behind <b style={{ fontFamily: "Winthorpe" }}>MedQuery</b>
             </h2>
           </div>
