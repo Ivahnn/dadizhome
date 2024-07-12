@@ -22,7 +22,7 @@ def initialize_model():
     embedder = HuggingFaceEmbeddings()
 
     print("Proceeding to instantiate model...")
-    llm = Ollama(model="gemma:2b")
+    llm = Ollama(model="llama3:8b")
 
     prompt_template = """
     1. Use the following pieces of context to answer the question at the end.
@@ -62,13 +62,14 @@ def initialize_model():
         retriever=retriever,
         return_source_documents=True,
     )
+    print(qa("How does plant respond to disease?")["result"])
 
     return qa
 
 
 def initialize_retriever(embedder):
     print_green("Loading Data...")
-    file_path = "medQuery.pdf"
+    file_path = "MedQ.pdf"
     loader = PDFPlumberLoader(file_path)
     docs = loader.load()
     
