@@ -1,0 +1,13 @@
+langchain
+langchain-experimental
+langchain-community
+faiss-cpu
+pdfplumber
+gradio
+langchain_huggingface
+django
+djangorestframework 
+django-cors-headers
+django-allauth
+pyJWT
+tf-keras
